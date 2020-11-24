@@ -1,0 +1,15 @@
+{
+    "name": "tote/php_school_board",
+    "authors": [
+        {
+            "name": "Stojan Kadiev",
+            "email": "kadievstojan@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "classmap": [
+            "./"
+        ]
+    }
+}
