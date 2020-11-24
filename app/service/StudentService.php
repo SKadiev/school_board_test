@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Service;
+use App\Models\Student;
 
 
 class StudentService {
@@ -9,7 +10,7 @@ class StudentService {
     protected $boardFactory;
 
 
-    public function __construct($pdo,$boardFactory) {
+    public function __construct($pdo, $boardFactory) {
         $this->pdo = $pdo;
         $this->boardFactory = $boardFactory;
 
@@ -24,21 +25,38 @@ class StudentService {
     }
 
 
-    private function selectBoardType($id) {
-        $statement = $this->pdo->prepare("select type from board where studentId = {$id} ");
+    private function selectBoardId($id) {
+        $statement = $this->pdo->prepare("select boardId from studentboard where studentId = {$id} ");
 
+        $statement->execute();
+        $boardType =  ($statement->fetch())['boardId'];
+        return $boardType;
+    }
+
+    private function selectBoardType($id) {
+        $statement = $this->pdo->prepare("select type from board where id = {$id} ");
         $statement->execute();
         $boardType =  ($statement->fetch())['type'];
         return $boardType;
     }
 
-    public function getStudentInfo ($id) : Board {
-        $studentData = $this->selectBoardType($id);
-        $boardType = $this->selectBoardType($id);
+    public function getStudentInfo ($id)  {
+        $statsData = [];
+        $studentData = $this->selectStudent($id);
+        $boardId = $this->selectBoardId($studentData['id']);
+        $boardType = $this->selectBoardType($boardId);
         $board = $this->boardFactory->getBoard($boardType);
-        $studentAvg = $board->studentAverage(explode($statementData));
-        // $studentPassed = $board->studentPassed($statementData);
-        // $studentStats = $board->studentStats($statementData);
+    
+        $student = new Student(
+            $id,
+            $studentData['name'],
+            $board->studentAverage(explode(',' , $studentData['grades'])),
+            $board->studentPassed(explode(',', $studentData['grades'])),
+            $studentData['grades']
+        );
+        var_dump(($board->studentStats($student)));
+
+    
 
     }
 

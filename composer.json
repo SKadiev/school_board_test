@@ -6,7 +6,6 @@
             "email": "kadievstojan@gmail.com"
         }
     ],
-    "require": {},
     "autoload": {
         "classmap": [
             "./"

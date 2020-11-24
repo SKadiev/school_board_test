@@ -1,3 +1,3 @@
 <?php
 
-$router->get('students', '@home');
+$router->get('/student', 'StudentController/index');

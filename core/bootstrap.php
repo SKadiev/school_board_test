@@ -4,6 +4,7 @@ use App\Core\App;
 use App\Core\Database\Connection;
 use App\Models\{CsmbBoard,CsmBoard,JsonFormat,XmlFormat};
 use App\Service\StudentService;
+use  App\Models\BoardFactory;
 
 App::bind('config', require 'config.php');
 
@@ -19,4 +20,4 @@ App::bind('CsmBoard', new CsmBoard( new XmlFormat()
 
 App::bind('studentService', new StudentService(
     Connection::make(App::get('config')['database'])
-), new BoardFactory());
+, new BoardFactory()));

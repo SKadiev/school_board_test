@@ -12,14 +12,18 @@ class CsmBoard implements Board {
     }
 
     public function studentAverage($scores): string {
-
+        return array_sum($scores)/count($scores);
     }
 
     public function studentPassed($scores): string {
+        $averageScore = $this->studentAverage($scores);
+        if ($averageScore >= 7) return 'pass';
+        else return 'fail';
 
     }
-    public function studentStats($scores): string {
-        $this->formater-format($scores);
+    public function studentStats($statsData) {
+         return($this->formater->format($statsData));
+        
     }
 
 }

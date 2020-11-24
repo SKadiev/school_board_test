@@ -4,21 +4,15 @@ namespace App\Controllers;
 
 use App\Core\App;
 
-class UsersController {
+class StudentController {
    
     public function index($id) {
-        // $student = App::get('database')->selectById('student', $id);
-        $student = App::get('studentService')->getData($id);
+        $student = App::get('studentService')->getStudentInfo($id);
 
-        return view('student', compact('users'));
+        return;
+
     }
 
     
-    public function store() {
-        App::get('database')->insert('users', [
-            'name' => $_POST['name']
-        ]);
-
-        return redirect('users');
-    }
+   
 }

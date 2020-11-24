@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class CsmbBoard implements Board {
+class Student {
 
     protected $id;
     protected $name;
@@ -18,6 +18,16 @@ class CsmbBoard implements Board {
         $this->avarageResults = $avarageResults;
         $this->finalResult = $finalResult;
 
+    }
+
+    public function studentData () {
+        $statsData = [];
+        $statsData['studentId'] =   $this->$id;
+        $statsData['studentName'] =  $this->name;
+        $statsData['average'] =  $this->avarageResults;
+        $statsData['final'] = $this->finalResult;
+        $statsData['grades'] = $this->grades;
+        return  $statsData;
     }
 
    

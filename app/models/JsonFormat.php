@@ -4,9 +4,11 @@ namespace App\Models;
 
 class JsonFormat implements Formater
 {
-    public function format( $data): string
+    public function format( $data)
     {
+        var_dump('jsonParse');
 
-        return $data;
+        return ($data);
+        //ran out of time 
     }
 }
