@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-interface Board{
+interface Board {
 
     public function studentAverage($scores): string;
     public function studentPassed($scores): string;

@@ -3,7 +3,7 @@
 namespace App\Models;
 use App\Models\Formater;
 
-class CsbBoard implements Board {
+class CsmBoard implements Board {
 
     protected $formater;
 
