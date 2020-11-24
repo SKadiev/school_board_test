@@ -13,8 +13,8 @@ class QueryBuilder {
     }
 
   
-    public function selectAll($table) {
-        $statement = $this->pdo->prepare("select * from {$table}");
+    public function selectById($table, $id) {
+        $statement = $this->pdo->prepare("select * from {$table} where id = {$id} ");
 
         $statement->execute();
 
