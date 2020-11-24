@@ -36,6 +36,9 @@ class StudentService {
         $studentData = $this->selectBoardType($id);
         $boardType = $this->selectBoardType($id);
         $board = $this->boardFactory->getBoard($boardType);
+        $studentAvg = $board->studentAverage(explode($statementData));
+        // $studentPassed = $board->studentPassed($statementData);
+        // $studentStats = $board->studentStats($statementData);
 
     }
 
